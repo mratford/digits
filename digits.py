@@ -37,7 +37,7 @@ def solve(target, *numbers):
                 new_ops.append(
                     (
                         xs.remove(x).remove(y).add(y // x),
-                        commands.append(f"{y} / {x} = {y / x}"),
+                        commands.append(f"{y} / {x} = {y // x}"),
                     )
                 )
 
@@ -56,8 +56,10 @@ if __name__ == "__main__":
     parser.add_argument("-a", "--all", help="Show all solutions", action="store_true")
     args = parser.parse_args()
 
-    solutions = solve(int(args.target), [int(x) for x in args.numbers])
+    solutions = solve(int(args.target), *[int(x) for x in args.numbers])
     print("\n".join(next(solutions)))
+
     if args.all:
         for s in solutions:
-            print("\n".join(next(s)))
+            print("\n")
+            print("\n".join(s))
