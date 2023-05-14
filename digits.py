@@ -5,6 +5,7 @@ import argparse
 
 
 def solve(target, *numbers):
+    # Breadth first search to guarantee minimum operations
     searched = pset(pset(numbers))
     search = deque([(pset(numbers), pvector())])
 
